@@ -33,11 +33,7 @@ const removeTodoList = (state: TodolistType[], action: BatyaType) => {
             //     setTodolists([...todolists]);
             // }
 
-            const todolist = state.find(tl => tl.id === action.payload.id)
-            if (todolist) {
-                todolist.title = action.payload.title
-                return [...state]
-            }
+            return state.map(el => el.id === action.payload.id ? {...el, title: action.payload.title} : el)
         }
 
         default:
